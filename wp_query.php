@@ -128,10 +128,10 @@ $args = array(
                             // Note: if the query is in a feed, wordpress overwrites this parameter with the stored 'posts_per_rss' option. Treimpose the limit, try using the 'post_limits' filter, or filter 'pre_option_posts_per_rss' and return -1
     'nopaging' => false, // (bool) - 默认是'false', 显示分页.
     'paged' => get_query_var('paged'), // (int) - 通过get_query_var获取分页数量，就是获取浏览器地址后缀. 显示特定页的帖子当使用 "Older Entries" 链接时候.
-                                       // NOTE: Use get_query_var('page'); if you want your query to work in a Page template that you've set as your static front page. The query variable 'page' holds the pagenumber for a single paginated Post or Page that includes the <!--nextpage--> Quicktag in the post content.
-    'nopaging' => false, // (boolean) - show all posts or use pagination. Default value is 'false', use paging.
-    'posts_per_archive_page' => 10, // (int) - number of posts to show per page - on archive pages only. Over-rides posts_per_page and showposts on pages where is_archive() or is_search() would be true.
-    'offset' => 3, // (int) - number of post to displace or pass over.
+                                       // NOTE: Use get_query_var('page'); 如果你希望你的分页在设置首页的页面能够显示. 检索的变量 'page' 包含单个已分页的post或page的 pagenumbe r包含 <!--nextpage--> Quicktag标签在post内容里.
+    
+    'posts_per_archive_page' => 10, // (int) - acchive模板上显示的每页帖子数量. 覆盖 posts_per_page and showposts on pages 当 is_archive() 或者 is_search() 设置为 true.
+    'offset' => 3, // (int) - 设置多少数量帖子来展示或传递.
                    // Warning: Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. for a workaround see: http://codex.wordpress.org/Making_Custom_Queries_using_Offset_and_Pagination
                    // The 'offset' parameter is ignored when 'posts_per_page'=>-1 (show all posts) is used.
     'paged' => get_query_var('paged'), // (int) - number of page. Show the posts that would normally show up just on page X when usinthe "Older Entries" link.
