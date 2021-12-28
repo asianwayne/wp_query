@@ -23,22 +23,23 @@ $args = array(
   'cat' => 5, // (int) - 查询特定分类id下的帖子 (and any children of that category).
   'cat' => '-12,-34,-56' // 使用减号➖来排除这些指定分类下的帖子.
   'category_name' => 'staff, news', // (string) - 使用分类的slug来查询这些分类下的帖子 (和他们的子分类下的帖子)
-  'category_name' => 'staff+news', // (string) - 使用加号➕来查询同时拥有这些分类的帖子
+  'category_name' => 'staff+news', // (string) - 使用加号➕来查询拥有这些所有分类的帖子
   'category__and' => array( 2, 6 ), // (array) - 使用id来查询同时在相关分类id下的帖子. 这里表示这些帖子同时在分类id2和分类id6..
-  'category__in' => array( 2, 6 ), // (array) - 使用id来表示帖子在这些分类id下面。 (不包含这些分类的子分类).
+  'category__in' => array( 2, 6 ), // (array) - 使用id来表示帖子在这些分类id下面(包括同时和不同时)。 (不包含这些分类的子分类).
   'category__not_in' => array( 2, 6 ), // (array) - 使用id来表示查询不包含有这些分类id的帖子 (不是分类的子分类)
 
 // Tag Parameters - 查询相关指定标签下的帖子.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Tag_Parameters
   'tag' => 'cooking', // (string) - 使用tag的slug名称来查询帖子.
+  'tag' => 'bread+baking+recipe', // (string) 查询有用这些所有标签的帖子
   'tag_id' => 5, // (int) - 查询该id标签下的帖子.
-  'tag__and' => array( 2, 6), // (array) - 查询这些id下的帖子.
-  'tag__in' => array( 2, 6), // (array) - use tag ids.
-  'tag__not_in' => array( 2, 6), // (array) - use tag ids.
-  'tag_slug__and' => array( 'red', 'blue'), // (array) - use tag slugs.
-  'tag_slug__in' => array( 'red', 'blue'), // (array) - use tag slugs.
+  'tag__and' => array( 2, 6), // (array) - 查询这些id下的帖子，双下划线.
+  'tag__in' => array( 2, 6), // (array) - 查询同时在这些标签下的帖子，双下划线.
+  'tag__not_in' => array( 2, 6), // (array) - 第一个双下划线，第二个下划线，查询没有这两个标签的帖子.
+  'tag_slug__and' => array( 'red', 'blue'), // (array) - 同tag__and.
+  'tag_slug__in' => array( 'red', 'blue'), // (array) - 同tag__in.
 
-// Taxonomy Parameters - Show posts associated with certain taxonomy.
+// Taxonomy Parameters - 查询大分类下面的帖子.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Taxonomy_Parameters
 // Important Note: tax_query takes an array of tax query arguments arrays (it takes an array of arrays)
 // This construct allows you to query multiple taxonomies by using the relation parameter in the first (outer) array to describe the boolean relationship between the taxonomy queries.
