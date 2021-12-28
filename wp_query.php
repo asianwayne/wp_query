@@ -4,7 +4,7 @@
 * Compiled by luetkemj - luetkemj.github.io
 * Translated by Wayne @ milad@vip.qq.com
 *
-* CODEX: http://codex.wordpress.org/Class_Reference/WP_Query#Parameters
+* Referrence: https://developer.wordpress.org/reference/classes/wp_query/#parameters
 * Source: https://core.trac.wordpress.org/browser/tags/4.9.4/src/wp-includes/query.php
 */
 /* 菜鸟提示：int是整数，string 是文本，array是数组，bool是是或者否，*/
@@ -24,8 +24,8 @@ $args = array(
   'cat' => '-12,-34,-56' // 使用减号➖来排除这些指定分类下的帖子.
   'category_name' => 'staff, news', // (string) - 使用分类的slug来查询这些分类下的帖子 (和他们的子分类下的帖子)
   'category_name' => 'staff+news', // (string) - 使用加号➕来查询拥有这些所有分类的帖子
-  'category__and' => array( 2, 6 ), // (array) - 使用id来查询同时在相关分类id下的帖子. 这里表示这些帖子同时在分类id2和分类id6..
-  'category__in' => array( 2, 6 ), // (array) - 使用id来表示帖子在这些分类id下面(包括同时和不同时)。 (不包含这些分类的子分类).
+  'category__and' => array( 2, 6 ), // (array) - 使用id来查询同时在相关分类id下的帖子. 这里表示这些帖子同时在分类id2和分类id6.Both.
+  'category__in' => array( 2, 6 ), // (array) - 使用id来表示帖子在这些分类id下面(包括同时和不同时)。 (不包含这些分类的子分类) Either.
   'category__not_in' => array( 2, 6 ), // (array) - 使用id来表示查询不包含有这些分类id的帖子 (不是分类的子分类)
 
 // Tag Parameters - 查询相关指定标签下的帖子.
@@ -33,8 +33,8 @@ $args = array(
   'tag' => 'cooking', // (string) - 使用tag的slug名称来查询帖子.
   'tag' => 'bread+baking+recipe', // (string) 查询有用这些所有标签的帖子
   'tag_id' => 5, // (int) - 查询该id标签下的帖子.
-  'tag__and' => array( 2, 6), // (array) - 查询这些id下的帖子，双下划线.
-  'tag__in' => array( 2, 6), // (array) - 查询同时在这些标签下的帖子，双下划线.
+  'tag__and' => array( 2, 6), // (array) - 查询这些id下的帖子，双下划线 Both.
+  'tag__in' => array( 2, 6), // (array) - 查询同时在这些标签下的帖子，双下划线 Either.
   'tag__not_in' => array( 2, 6), // (array) - 第一个双下划线，第二个下划线，查询没有这两个标签的帖子.
   'tag_slug__and' => array( 'red', 'blue'), // (array) - 同tag__and.
   'tag_slug__in' => array( 'red', 'blue'), // (array) - 同tag__in.
