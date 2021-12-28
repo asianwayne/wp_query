@@ -39,15 +39,15 @@ $args = array(
   'tag_slug__and' => array( 'red', 'blue'), // (array) - 同tag__and.
   'tag_slug__in' => array( 'red', 'blue'), // (array) - 同tag__in.
 
-// Taxonomy Parameters - 查询大分类下面的帖子. taxonomy 包括 category\post-tag\post-frmat\自定义分类
+// Taxonomy Parameters - 用tax_query查询。查询大分类下面的帖子. taxonomy 包括 category\post-tag\post-frmat\自定义分类
 // http://codex.wordpress.org/Class_Reference/WP_Query#Taxonomy_Parameters
-// Important Note: tax_query takes an array of tax query arguments arrays (it takes an array of arrays)
+// Important Note: tax_query takes an array of tax query arguments arrays (it takes an array of arrays)。 tax_query跟meta_query一样数组里面包含数组，可以通过关系 or 或者and 来查询多个tax query
 // This construct allows you to query multiple taxonomies by using the relation parameter in the first (outer) array to describe the boolean relationship between the taxonomy queries.
   'tax_query' => array( // (array) - use taxonomy parameters (available with Version 3.1).
-    'relation' => 'AND', // (string) - The logical relationship between each inner taxonomy array when there is more than one. Possible values are 'AND', 'OR'. Do not use with a single inner taxonomy array. Default value is 'AND'.
+    'relation' => 'AND', // (string) - 只有单个array数组的时候不可用。 默认值是AND。 多个tax_query数组的时候表明数组和数组之间的关系成立条件。
     array(
-      'taxonomy' => 'color', // (string) - Taxonomy.
-      'field' => 'slug', // (string) - Select taxonomy term by Possible values are 'term_id', 'name', 'slug' or 'term_taxonomy_id'. Default value is 'term_id'.
+      'taxonomy' => 'color', // (string) - 自定义分类，也可以是category等.
+      'field' => 'slug', // (string) - 默认的是term_id are 'term_id', 'name', 'slug' or 'term_taxonomy_id'. Default value is 'term_id'.
       'terms' => array( 'red', 'blue' ), // (int/string/array) - Taxonomy term(s).
       'include_children' => true, // (bool) - Whether or not to include children for hierarchical taxonomies. Defaults to true.
       'operator' => 'IN' // (string) - Operator to test. Possible values are 'IN', 'NOT IN', 'AND', 'EXISTS' and 'NOT EXISTS'. Default value is 'IN'.
