@@ -7,19 +7,20 @@
 * CODEX: http://codex.wordpress.org/Class_Reference/WP_Query#Parameters
 * Source: https://core.trac.wordpress.org/browser/tags/4.9.4/src/wp-includes/query.php
 */
+/* 菜鸟提示：int是整数，string 是文本，array是数组，bool是是或者否，*/
 
 $args = array(
 
 // Author Parameters - 和帖子相关的作者.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Author_Parameters
   'author' => '1,2,3,', // (int | string) -  使用作者id或者用逗号分隔的id列表 [用减号-来排除作者，例如 ex. 'author' => '-1,-2,-3,']
-  'author_name' => 'luetkemj', // (string) - use 'user_nicename' (NOT name)
-  'author__in' => array( 2, 6 ), // (array) - use author id (available with Version 3.7).
-  'author__not_in' => array( 2, 6 ), // (array)' - use author id (available with Version 3.7).
+  'author_name' => 'luetkemj', // (string) - 使用作者别称（作者后台页面可以设置，不是作者名字） (NOT name)
+  'author__in' => array( 2, 6 ), // (array) - 使用作者id来表示查询哪些作者的帖子 (available with Version 3.7).
+  'author__not_in' => array( 2, 6 ), // (array)' - 使用作者id来表示来排除哪些作者的帖子 (available with Version 3.7).
 
-// Category Parameters - Show posts associated with certain categories.
+// Category Parameters - 分类相关参数.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Category_Parameters
-  'cat' => 5, // (int) - Display posts that have this category (and any children of that category), using category id.
+  'cat' => 5, // (int) - 查询特定分类id下的帖子 (and any children of that category).
   'cat' => '-12,-34,-56' // Display all posts except those from a category by prefixing its id with a '-' (minus) sign.
   'category_name' => 'staff, news', // (string) - Display posts that have these categories (and any children of that category), using category slug.
   'category_name' => 'staff+news', // (string) - Display posts that have "all" of these categories, using category slug.
