@@ -47,10 +47,10 @@ $args = array(
     'relation' => 'AND', // (string) - 只有单个array数组的时候不可用。 默认值是AND。 多个tax_query数组的时候表明数组和数组之间的关系成立条件。
     array(
       'taxonomy' => 'color', // (string) - 自定义分类，也可以是category等.
-      'field' => 'slug', // (string) - 默认的是term_id are 'term_id', 'name', 'slug' or 'term_taxonomy_id'. Default value is 'term_id'.
-      'terms' => array( 'red', 'blue' ), // (int/string/array) - Taxonomy term(s).
-      'include_children' => true, // (bool) - Whether or not to include children for hierarchical taxonomies. Defaults to true.
-      'operator' => 'IN' // (string) - Operator to test. Possible values are 'IN', 'NOT IN', 'AND', 'EXISTS' and 'NOT EXISTS'. Default value is 'IN'.
+      'field' => 'slug', // (string) - 查询该分类类型下的分类字段。默认的是term_id。 可以是 'term_id', 'name', 'slug' 或者 'term_taxonomy_id'.
+      'terms' => array( 'red', 'blue' ), // (int/string/array) 如果上面设置的查询分类字段是term_id， 这里就是array(2,4). 如果上面设置的slug， 这里就是red,blue. 
+      'include_children' => true, // (bool) - 默认是true， 如果是分级的分类，设置是否包含子分类。
+      'operator' => 'IN' // (string) - 操作方式. 值是 'IN', 'NOT IN', 'AND', 'EXISTS' and 'NOT EXISTS'. 默认值是 'IN'， 也就是在上面term条件里。
     ),
     array(
       'taxonomy' => 'actor',
