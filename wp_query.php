@@ -61,19 +61,19 @@ $args = array(
     )
   ),
 
-// Post & Page Parameters - Display content based on post and page parameters.
+// Post & Page Parameters - 根据post和page的参数来查询帖子.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Post_.26_Page_Parameters
-  'p' => 1, // (int) - use post id.
-  'name' => 'hello-world', // (string) - use post slug.
-  'title' => 'Hello World' // (string) - use post title (available with Version 4.4)
-  'page_id' => 1, // (int) - use page id.
-  'pagename' => 'sample-page', // (string) - use page slug.
-  'pagename' => 'contact_us/canada', // (string) - Display child page using the slug of the parent and the child page, separated ba slash
-  'post_name__in' => 'sample-post' (array) // - use post slugs. Specify posts to retrieve. (available since Version 4.4)
-  'post_parent' => 1, // (int) - use page id. Return just the child Pages. (Only works with heirachical post types.)
-  'post_parent__in' => array(1,2,3) // (array) - use post ids. Specify posts whose parent is in an array. NOTE: Introduced in 3.6
-  'post_parent__not_in' => array(1,2,3), // (array) - use post ids. Specify posts whose parent is not in an array.
-  'post__in' => array(1,2,3), // (array) - use post ids. Specify posts to retrieve. ATTENTION If you use sticky posts, they will be included (prepended!) in the posts you retrieve whether you want it or not. To suppress this behaviour use ignore_sticky_posts
+  'p' => 1, // (int) - 查询post id 为1的帖子.
+  'name' => 'hello-world', // (string) - 使用post slug.
+  'title' => 'Hello World' // (string) - 使用post title
+  'page_id' => 1, // (int) - 使用page id.
+  'pagename' => 'sample-page', // (string) - 使用 page slug.
+  'pagename' => 'contact_us/canada', // (string) - 查询该父级页面下的子页面
+  'post_name__in' => 'sample-post' (array) // - 使用post slug来检索
+  'post_parent' => 1, // (int) - 使用page id,返回子级页面。 只有设置为有层级的文章类型才能用。
+  'post_parent__in' => array(1,2,3) // (array) - use post ids. 查询父级在数组里面的帖子。
+  'post_parent__not_in' => array(1,2,3), // (array) - use post ids. 查询父级不在里面的帖子。
+  'post__in' => array(1,2,3), // (array) - use post ids. 查询特定数组下的帖子. ATTENTION 如果你使用置顶帖子, 他们将会被包含，如果要去掉置顶帖子，使用 ignore_sticky_posts
   'post__not_in' => array(1,2,3), // (array) - use post ids. Specify post NOT to retrieve.
   // NOTE: you cannot combine 'post__in' and 'post__not_in' in the same query
 
