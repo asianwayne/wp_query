@@ -1,7 +1,8 @@
 <?php
 /**
-* WordPress Query Comprehensive Reference
+* WordPress Query Comprehensive Reference wp_query参数中文翻译
 * Compiled by luetkemj - luetkemj.github.io
+* Translated by Wayne @ milad@vip.qq.com
 *
 * CODEX: http://codex.wordpress.org/Class_Reference/WP_Query#Parameters
 * Source: https://core.trac.wordpress.org/browser/tags/4.9.4/src/wp-includes/query.php
@@ -9,9 +10,9 @@
 
 $args = array(
 
-// Author Parameters - Show posts associated with certain author.
+// Author Parameters - 和帖子相关的作者.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Author_Parameters
-  'author' => '1,2,3,', // (int | string) -  use author id or comma-separated list of IDs [use minus (-) to exclude authors by ID ex. 'author' => '-1,-2,-3,']
+  'author' => '1,2,3,', // (int | string) -  使用作者id或者用逗号分隔的id列表 [用减号-来排除作者，例如 ex. 'author' => '-1,-2,-3,']
   'author_name' => 'luetkemj', // (string) - use 'user_nicename' (NOT name)
   'author__in' => array( 2, 6 ), // (array) - use author id (available with Version 3.7).
   'author__not_in' => array( 2, 6 ), // (array)' - use author id (available with Version 3.7).
