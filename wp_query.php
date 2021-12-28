@@ -24,13 +24,13 @@ $args = array(
   'cat' => '-12,-34,-56' // 使用减号➖来排除这些指定分类下的帖子.
   'category_name' => 'staff, news', // (string) - 使用分类的slug来查询这些分类下的帖子 (和他们的子分类下的帖子)
   'category_name' => 'staff+news', // (string) - 使用加号➕来查询同时拥有这些分类的帖子
-  'category__and' => array( 2, 6 ), // (array) - Display posts that are in multiple categories. This shows posts that are in both categories 2 and 6.
-  'category__in' => array( 2, 6 ), // (array) - Display posts that have this category (not children of that category), using category id.
-  'category__not_in' => array( 2, 6 ), // (array) - Display posts that DO NOT HAVE these categories (not children of that category), using category id.
+  'category__and' => array( 2, 6 ), // (array) - 使用id来查询同时在相关分类id下的帖子. 这里表示这些帖子同时在分类id2和分类id6..
+  'category__in' => array( 2, 6 ), // (array) - 使用id来表示帖子在这些分类id下面。 (不包含这些分类的子分类).
+  'category__not_in' => array( 2, 6 ), // (array) - 使用id来表示查询不包含有这些分类id的帖子 (不是分类的子分类)
 
-// Tag Parameters - Show posts associated with certain tags.
+// Tag Parameters - 查询相关指定标签下的帖子.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Tag_Parameters
-  'tag' => 'cooking', // (string) - use tag slug.
+  'tag' => 'cooking', // (string) - 使用tag的slug名称来查询.
   'tag_id' => 5, // (int) - use tag id.
   'tag__and' => array( 2, 6), // (array) - use tag ids.
   'tag__in' => array( 2, 6), // (array) - use tag ids.
