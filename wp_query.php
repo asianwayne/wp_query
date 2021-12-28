@@ -39,7 +39,7 @@ $args = array(
   'tag_slug__and' => array( 'red', 'blue'), // (array) - 同tag__and.
   'tag_slug__in' => array( 'red', 'blue'), // (array) - 同tag__in.
 
-// Taxonomy Parameters - 查询大分类下面的帖子.
+// Taxonomy Parameters - 查询大分类下面的帖子. taxonomy 包括 category\post-tag\post-frmat\自定义分类
 // http://codex.wordpress.org/Class_Reference/WP_Query#Taxonomy_Parameters
 // Important Note: tax_query takes an array of tax query arguments arrays (it takes an array of arrays)
 // This construct allows you to query multiple taxonomies by using the relation parameter in the first (outer) array to describe the boolean relationship between the taxonomy queries.
