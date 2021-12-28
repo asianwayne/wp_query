@@ -114,20 +114,20 @@ $args = array(
     'post_status' => 'any', // - 检索 不带'exclude_from_search'设置为 true的任何状态的帖子.
 
 
-// Comment Paremters - @since Version 4.9 Introduced the `$comment_count` parameter.
+// Comment Paremters - @since Version 4.9  `$comment_count`参数介绍.
 // https://codex.wordpress.org/Class_Reference/WP_Query#Comment_Parameters
-    'comment_count' => 10 // (int | array) The amount of comments your CPT has to have ( Search operator will do a '=' operation )
-    'comment_count' => array(
+    'comment_count' => 10 // (int | array) 评论数量等于10的文章 ( 操作符是 '='  )
+    'comment_count' => array( //评论数量等于或小于或大于10
       'value' => 10 // (int) - The amount of comments your CPT has to have when comparing
       'compare' => '=' // (string) - The search operator. Possible values are '=', '!=', '>', '>=', '<', '<='. Default value is '='.
     )
 
-// Pagination Parameters
+// Pagination Parameters 重要：分页参数
     //http://codex.wordpress.org/Class_Reference/WP_Query#Pagination_Parameters
-    'posts_per_page' => 10, // (int) - number of post to show per page (available with Version 2.1). Use 'posts_per_page' => -1 to show all posts.
+    'posts_per_page' => 10, // (int) - 每页包含数量. 设置 'posts_per_page' => -1 显示所有的帖子.
                             // Note: if the query is in a feed, wordpress overwrites this parameter with the stored 'posts_per_rss' option. Treimpose the limit, try using the 'post_limits' filter, or filter 'pre_option_posts_per_rss' and return -1
-    'nopaging' => false, // (bool) - show all posts or use pagination. Default value is 'false', use paging.
-    'paged' => get_query_var('paged'), // (int) - number of page. Show the posts that would normally show up just on page X when usinthe "Older Entries" link.
+    'nopaging' => false, // (bool) - 默认是'false', 显示分页.
+    'paged' => get_query_var('paged'), // (int) - 通过get_query_var获取分页数量，就是获取浏览器地址后缀. 显示特定页的帖子当使用 "Older Entries" 链接时候.
                                        // NOTE: Use get_query_var('page'); if you want your query to work in a Page template that you've set as your static front page. The query variable 'page' holds the pagenumber for a single paginated Post or Page that includes the <!--nextpage--> Quicktag in the post content.
     'nopaging' => false, // (boolean) - show all posts or use pagination. Default value is 'false', use paging.
     'posts_per_archive_page' => 10, // (int) - number of posts to show per page - on archive pages only. Over-rides posts_per_page and showposts on pages where is_archive() or is_search() would be true.
