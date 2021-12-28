@@ -73,34 +73,34 @@ $args = array(
   'post_parent' => 1, // (int) - 使用page id,返回子级页面。 只有设置为有层级的文章类型才能用。
   'post_parent__in' => array(1,2,3) // (array) - use post ids. 查询父级在数组里面的帖子。
   'post_parent__not_in' => array(1,2,3), // (array) - use post ids. 查询父级不在里面的帖子。
-  'post__in' => array(1,2,3), // (array) - use post ids. 查询特定数组下的帖子. ATTENTION 如果你使用置顶帖子, 他们将会被包含，如果要去掉置顶帖子，使用 ignore_sticky_posts
-  'post__not_in' => array(1,2,3), // (array) - use post ids. Specify post NOT to retrieve.
-  // NOTE: you cannot combine 'post__in' and 'post__not_in' in the same query
+  'post__in' => array(1,2,3), // (array) - use post ids. 查询特定数组下的帖子. 注意：如果你使用置顶帖子, 他们将会被包含，如果要去掉置顶帖子，使用 ignore_sticky_posts
+  'post__not_in' => array(1,2,3), // (array) - use post ids. 指定不查询的帖子.
+  // NOTE: 不能同时使用post__in 和 post__not_in 
 
-// Password Parameters - Show content based on post and page parameters. Remember that default post_type is only set to display posts but not pages.
+// Password Parameters - 根据post和page的内容来检索帖子。默认的文章类都是post.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Password_Parameters
-  'has_password' => true, // (bool) - available with Version 3.9
+  'has_password' => true, // (bool) - 检索带密码的帖子，null就是包含所有加密码和不加密码的帖子
                           // true for posts with passwords;
                           // false for posts without passwords;
                           // null for all posts with and without passwords
-  'post_password' => 'multi-pass', // (string) - show posts with a particular password (available with Version 3.9)
+  'post_password' => 'multi-pass', // (string) - 检索特定密码的帖子
 
-// Post Type Parameters - Show posts associated with certain type or status.
+// Post Type Parameters - 检索post和page特定状态下的数据.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Type_Parameters
-  'post_type' => array( // (string / array) - use post types. Retrieves posts by Post Types, default value is 'post';
+  'post_type' => array( // (string / array) - 检索文章类型，默认是post;
     'post', // - a post.
     'page', // - a page.
     'revision', // - a revision.
     'attachment', // - an attachment. The default WP_Query sets 'post_status'=>'published', but atchments default to 'post_status'=>'inherit' so you'll need to set the status to 'inherit' or 'any'.
     'nav_menu_item' // - a navigation menu item
-    'my-custom-post-type', // - Custom Post Types (e.g. movies)
+    'my-custom-post-type', // - 自定义文章类型 (e.g. movies)
   ),
   // NOTE: The 'any' keyword available to both post_type and post_status queries cannot be used within an array.
-  'post_type' => 'any', // - retrieves any type except revisions and types with 'exclude_from_search' set to true.
+  'post_type' => 'any', // - 检索不包括revisions和exclude_from_search参数设置为true的任何帖子。
 
-// Post Status Parameters - Show posts associated with certain type or status.
+// Post Status Parameters - 查询post 状态下的帖子。
 // http://codex.wordpress.org/Class_Reference/WP_Query#Status_Parameters
-    'post_status' => array( // (string | array) - use post status. Retrieves posts by Post Status, default value i'publish'.
+    'post_status' => array( // (string | array) - post状态，下面几种都是状态。默认值是'publish'.
       'publish', // - a published post or page.
       'pending', // - post is pending review.
       'draft',  // - a post in draft status.
@@ -110,8 +110,8 @@ $args = array(
       'inherit', // - a revision. see get_children.
       'trash', // - post is in trashbin (available with Version 2.9).
     ),
-    // NOTE: The 'any' keyword available to both post_type and post_status queries cannot be used within an array.
-    'post_status' => 'any', // - retrieves any status except those from post types with 'exclude_from_search' set to true.
+    // NOTE: The 'any' keyword available to both post_type and post_status queries cannot be used within an array. any关键词不能用在数组里
+    'post_status' => 'any', // - 检索 不带'exclude_from_search'设置为 true的任何状态的帖子.
 
 
 // Comment Paremters - @since Version 4.9 Introduced the `$comment_count` parameter.
