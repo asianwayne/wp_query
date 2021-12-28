@@ -224,6 +224,31 @@ $args = array(
          'compare' => 'NOT LIKE',
        )
     ),
+  /* meta query 可以多个数组嵌套来实现多条件的查询，比方说下面就实现了price在50-200之间或size < xl 这个条件和 color = white这个条件的并列 */
+
+				'meta_query'  => array(
+					'relation'  => 'AND',
+					array(
+						'relation'  => 'OR',
+						array(
+							'key' => 'price',
+						'value' => array(50,200),
+						'compare' => 'BETWEEN',
+						'type'  => 'NUMERIC'  //设置类型的时候才能用between， 因为type的默认值是char
+					),
+						array(
+							'key'  => 'size',
+							'value' => 'xl',
+							'type' => 'CHAR',
+							'compare' => '<'
+
+						),),
+
+					array(
+						'key'  => 'color',
+						'value'  => 'white',
+						'compare' => '='
+					),
 
 // Permission Parameters - Display published posts, as well as private posts, if the user has the appropriate capability:
 // http://codex.wordpress.org/Class_Reference/WP_Query#Permission_Parameters
