@@ -30,9 +30,9 @@ $args = array(
 
 // Tag Parameters - 查询相关指定标签下的帖子.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Tag_Parameters
-  'tag' => 'cooking', // (string) - 使用tag的slug名称来查询.
-  'tag_id' => 5, // (int) - use tag id.
-  'tag__and' => array( 2, 6), // (array) - use tag ids.
+  'tag' => 'cooking', // (string) - 使用tag的slug名称来查询帖子.
+  'tag_id' => 5, // (int) - 查询该id标签下的帖子.
+  'tag__and' => array( 2, 6), // (array) - 查询这些id下的帖子.
   'tag__in' => array( 2, 6), // (array) - use tag ids.
   'tag__not_in' => array( 2, 6), // (array) - use tag ids.
   'tag_slug__and' => array( 'red', 'blue'), // (array) - use tag slugs.
