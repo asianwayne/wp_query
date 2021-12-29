@@ -225,6 +225,8 @@ $args = array(
          'compare' => 'NOT LIKE',
        )
     ),
+	/* compare的LIKE解释：meta_query设置条件value值的时候会出现没有值或者没定义的情况，当设置compare为LIKE的时候，就相当于设置了value值为全局符*，可以是任何值，会显示其自身任何类型的值，
+	例如：当我们设置color 的value值为'bl'时候， 设置为compare为LIKE的时候，也就是查询的是bl*。也就是会获取到所有数据为blue的值。当value是空值的时候，获取到的只有*，也就是获取到任何存在的值。 */
   /* meta query 可以多个数组嵌套来实现多条件的查询，比方说下面就实现了price在50-200之间或size < xl 这个条件和 color = white这个条件的并列 */
 
 				'meta_query'  => array(
