@@ -40,6 +40,7 @@ $args = array(
   'tag_slug__in' => array( 'red', 'blue'), // (array) - 同tag__in.
 
 // Taxonomy Parameters - 用tax_query查询。查询大分类下面的帖子. taxonomy 包括 category\post-tag\post-frmat\自定义分类
+	//Taxonomy的几种类型：category\post_tag\post_format是自带的，还有就是custom taxonomy.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Taxonomy_Parameters
 // Important Note: tax_query takes an array of tax query arguments arrays (it takes an array of arrays)。 tax_query跟meta_query一样数组里面包含数组，可以通过关系 or 或者and 来查询多个tax query
 // This construct allows you to query multiple taxonomies by using the relation parameter in the first (outer) array to describe the boolean relationship between the taxonomy queries.
