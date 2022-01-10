@@ -141,30 +141,31 @@ $args = array(
                                        // http://codex.wordpress.org/Pagination#Troubleshooting_Broken_Pagination
     'page' => get_query_var('page'), // (int) - number of page for a static front page. Show the posts that would normally show up just on page X of a Static Front Page.
                                      // NOTE: The query variable 'page' holds the pagenumber for a single paginated Post or Page that includes the <!--nextpage--> Quicktag in the post content.
-    'ignore_sticky_posts' => false, // (boolean) - ignore sticky posts or not (available with Version 3.1, replaced caller_get_posts parameter). Default value is 0 - don't ignore sticky posts. Note: ignore/exclude sticky posts being included at the beginning of posts returned, but the sticky post will still be returned in the natural order of that list of posts returned.
+    'ignore_sticky_posts' => false, // (boolean) - 忽视置顶帖子，默认值是0，设置为1或者true的时候置顶的帖子就不会出现在循环里。、ignore/excclude posts 在帖子返回的头部就已经加载，就算你设置了的情况下，sticky posts 依然会在帖子加载顺序的时候加载。
+	
 
-// Order & Orderby Parameters - Sort retrieved posts.
+// Order & Orderby Parameters - 对检索到的帖子进行排序.
 // http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters
-    'order' => 'DESC', // (string) - Designates the ascending or descending order of the 'orderby' parameter. Default to 'DESC'.
+    'order' => 'DESC', // (string) - 设置排序方式是顺序'ASC'或者反序'DESC'，不设置的话默认是'DESC'
                        //Possible Values:
-                       //'ASC' - ascending order from lowest to highest values (1, 2, 3; a, b, c).
-                       //'DESC' - descending order from highest to lowest values (3, 2, 1; c, b, a).
-    'orderby' => 'date', // (string) - Sort retrieved posts by parameter. Defaults to 'date'. One or more options can be passed. EX: 'orderby' => 'menu_order title'
-                         //Possible Values:
-                         // 'none' - No order (available since Version 2.8).
-                         // 'ID' - Order by post id. Note the capitalization.
-                         // 'author' - Order by author. ('post_author' is also accepted.)
-                         // 'title' - Order by title. ('post_title' is also accepted.)
-                         // 'name' - Order by post name (post slug). ('post_name' is also accepted.)
-                         // 'type' - Order by post type (available since Version 4.0). ('post_type' is also accepted.)
-                         // 'date' - Order by date. ('post_date' is also accepted.)
-                         // 'modified' - Order by last modified date. ('post_modified' is also accepted.)
-                         // 'parent' - Order by post/page parent id. ('post_parent' is also accepted.)
-                         // 'rand' - Random order. You can also use 'RAND(x)' where 'x' is an integer seed value.
-                         // 'comment_count' - Order by number of comments (available since Version 2.9).
+                       //'ASC' - 顺序，从低到高，如 (1, 2, 3; a, b, c).
+                       //'DESC' - 反序，从高到低 (3, 2, 1; c, b, a).
+    'orderby' => 'date', // (string) - 对检索的帖子进行排序的方式，默认是 'date'. 可以设置多个排序方式，如可以设置排序方式同时为menu_order和title. EX: 'orderby' => 'menu_order title'
+                         //Possible Values:orderby的几个值
+                         // 'none' - 没有排序No order (available since Version 2.8).
+                         // 'ID' - 根据 post id排序. 注意排序方式是大写的ID 不是小写.
+                         // 'author' - 排序方式是根据作者排序，author，也可以用post_author
+                         // 'title' - 根据标题排序，也可以用post_title
+                         // 'name' - 根据帖子名字，也就是post slug排序，也可以用post_name
+                         // 'type' - 根据文章类型排序，也可以用post_type (available since Version 4.0). ('post_type' is also accepted.)
+                         // 'date' - 根据时间排序，也可以用post_date. ('post_date' is also accepted.)
+                         // 'modified' - 根据上次修改时间排序，也可以用post_modified. ('post_modified' is also accepted.)
+                         // 'parent' - 根据帖子或者页面父级id进行排序，也可以用post_parent.
+                         // 'rand' - 随机排序. 也可以用 'RAND(x)' 当 'x' 是整数seed值.
+                         // 'comment_count' - 根据评论数量进行排序 (available since Version 2.9).
                          // 'relevance' - Order by search terms in the following order: First, whether the entire sentence is matched. Second, if all the search terms are within the titles. Third, if any of the search terms appear in the titles. And, fourth, if the full sentence appears in the contents.
-                         // 'menu_order' - Order by Page Order. Used most often for Pages (Order field in the Edit Page Attributes box) and for Attachments (the integer fields in the Insert / Upload Media Gallery dialog), but could be used for any post type with distinct 'menu_order' values (they all default to 0).
-                         // 'meta_value' - Note that a 'meta_key=keyname' must also be present in the query. Note also that the sorting will be alphabetical which is fine for strings (i.e. words), but can be unexpected for numbers (e.g. 1, 3, 34, 4, 56, 6, etc, rather than 1, 3, 4, 6, 34, 56 as you might naturally expect). Use 'meta_value_num' instead for numeric values.
+                         // 'menu_order' - 根据页面菜单排序。页面的时候最常用。其他文章类型也都用，都设置默认为0 (Order field in the Edit Page Attributes box) and for Attachments (the integer fields in the Insert / Upload Media Gallery dialog), but could be used for any post type with distinct 'menu_order' values (they all default to 0).
+                         // 'meta_value' - 根据字段的值进行排序，当用到这个的时候，一定有个前置的参数选项：meta_key = 字段名称 Note that a 'meta_key=keyname' must also be present in the query. Note also that the sorting will be alphabetical which is fine for strings (i.e. words), but can be unexpected for numbers (e.g. 1, 3, 34, 4, 56, 6, etc, rather than 1, 3, 4, 6, 34, 56 as you might naturally expect). Use 'meta_value_num' instead for numeric values.
                          // 'meta_type' if you want to cast the meta value as a specific type. Possible values are 'NUMERIC', 'BINARY',  'CHAR', 'DATE', 'DATETIME', 'DECIMAL', 'SIGNED', 'TIME', 'UNSIGNED', same as in '$meta_query'. When using 'meta_type' you can also use 'meta_value_*' accordingly. For example, when using DATETIME as 'meta_type' you can use 'meta_value_datetime' to define order structure.
                          // 'meta_value_num' - Order by numeric meta value (available since Version 2.8). Also note that a 'meta_key=keyname' must also be present in the query. This value allows for numerical sorting as noted above in 'meta_value'.
                          // 'post__in' - Preserve post ID order given in the 'post__in' array (available since Version 3.5). Note - the value of the order parameter does not change the resulting sort order.
