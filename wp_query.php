@@ -3,6 +3,7 @@
 * WordPress Query Comprehensive Reference wp_query参数中文翻译
 * Compiled by luetkemj - luetkemj.github.io
 * Translated by Wayne @ milad@vip.qq.com
+* 开发交流QQ群：706173813
 *
 * Referrence: https://developer.wordpress.org/reference/classes/wp_query/#parameters
 * Source: https://core.trac.wordpress.org/browser/tags/4.9.4/src/wp-includes/query.php
